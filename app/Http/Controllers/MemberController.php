@@ -115,13 +115,21 @@ class MemberController extends Controller {
         // Once the verifying work is done, we have to update the current data with new one. Be aware that
         // the new password has to be hashed before storing to make sure there will be no problem on
         // next verifying process with Auth::attempt
-        $user = Auth::user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->new_password);
-        $user->save();
-
+//        $user = Auth::user();
+//        $user->name = $request->name;
+//        $user->email = $request->email;
+//        $user->password = bcrypt($request->new_password);
+//        $user->save();
+//
+//        return redirect()->home();
+        // or
+        Auth::user()->update([
+            'name'=>request('name'),
+            'email'=>request('email'),
+            'password'=>bcrypt(request('new_password'))
+        ]);
         return redirect()->home();
+
     }
 
     /**
