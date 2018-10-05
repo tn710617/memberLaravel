@@ -98,7 +98,6 @@ class MemberController extends Controller {
         // First of all, we need to validate the items, especially give a confirmed function on password form
         $this->validate(request(), [
             'name'         => 'required',
-            'email'        => 'required|unique:users',
             'new_password' => 'required|min:6|confirmed'
         ]);
 
@@ -125,7 +124,6 @@ class MemberController extends Controller {
         // or
         Auth::User()->update([
             'name'=>request('name'),
-            'email'=>request('email'),
             'password'=>bcrypt(request('new_password'))
         ]);
         return redirect()->home();

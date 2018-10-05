@@ -5,8 +5,6 @@
         @method('put')
     <label for="name">Name:</label>
     <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" requried>
-    <label for="email">Email: </label>
-    <input type="email" name="email" id="email" class="form-control" requried value="{{ $user->email }}">
     <label for="password">Current Password: </label>
     <input type="password" name="current_password" id="current_password" class="form-control" requried>
     <label for="new_password">New Password </label>
