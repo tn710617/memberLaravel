@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\user;
+use App\User;
 
 class RegistrationController extends Controller
 {
@@ -21,12 +21,12 @@ class RegistrationController extends Controller
         // validate the form
         $this->validate(request(),[
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed'
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed'
         ]);
 
         // create and save the user
-        $user = user::create([
+        $user = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>bcrypt(request('password'))

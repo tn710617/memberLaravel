@@ -24,6 +24,10 @@ class SessionsController extends Controller {
     {
         // Attempt to authenticate the user.
         // If not, redirect back.
+        $this->validate(request(), [
+            'email' => 'required|unique:users|email',
+            'password' => 'required|min:6'
+        ]);
         if (!auth()->attempt(request(['email', 'password'])))
         {
             return back()->withErrors(['message' => 'Please check your credentials and try again']);
