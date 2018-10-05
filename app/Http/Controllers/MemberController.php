@@ -98,8 +98,8 @@ class MemberController extends Controller {
         // First of all, we need to validate the items, especially give a confirmed function on password form
         $this->validate(request(), [
             'name'         => 'required',
-            'email'        => 'required',
-            'new_password' => 'required|confirmed'
+            'email'        => 'required|unique:users',
+            'new_password' => 'required|min:6|confirmed'
         ]);
 
         // With Laravel's intrinsic setting, password must be hashed before stored into database,
