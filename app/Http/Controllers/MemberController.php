@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\hash;
+use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller {
 
@@ -80,7 +80,7 @@ class MemberController extends Controller {
 //        if(!Auth::check()){
 //            return redirect()->home();
 //        }
-        $user = Auth::user();
+        $user = Auth::User();
 
 //        var_dump($user);
         return view('edit', compact('user'));
@@ -108,7 +108,7 @@ class MemberController extends Controller {
         // stored in the database. if the result doesn't match, return error message, and if it does, then proceed
         // further.
 
-        if (!(Hash::check($request->current_password, Auth::user()->password)))
+        if (!(Hash::check($request->current_password, Auth::User()->password)))
         {
             return back()->withErrors(['message' => 'Please check your current password again']);
         }
@@ -123,7 +123,7 @@ class MemberController extends Controller {
 //
 //        return redirect()->home();
         // or
-        Auth::user()->update([
+        Auth::User()->update([
             'name'=>request('name'),
             'email'=>request('email'),
             'password'=>bcrypt(request('new_password'))
