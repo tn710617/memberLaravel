@@ -16,11 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/dengue', 'OpenDataController@dengue');
+Route::post('/dengue', 'dengueController@dengue');
 Route::post('/dengueFatalityRate', 'OpenDataController@dengueFatalityRate');
-Route::post('/rainfall', 'OpenDataController@rainfall');
-Route::post('/temperature', 'OpenDataController@temperature');
-Route::post('/humidity', 'OpenDataController@humidity');
+Route::post('/rainfall', 'rainfallController@rainfall');
+Route::post('/temperature', 'temperatureController@temperature');
+Route::post('/humidity', 'humidityController@humidity');
 
 
 
