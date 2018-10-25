@@ -20,6 +20,7 @@ Route::post('/dengue', 'dengueController@dengue')->middleware('cors');
 Route::post('/dengueFatalityRate', 'OpenDataController@dengueFatalityRate')->middleware('cors');
 Route::post('/rainfall', 'rainfallController@rainfall')->middleware('cors');
 Route::post('/temperatureAndHumidity', 'temperatureAndHumidityController@temperatureAndHumidity')->middleware('cors');
+Route::post('/breakdown', 'TotalController@breakdown')->middleware('cors');
 
 
 
